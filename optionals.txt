@@ -1,0 +1,99 @@
+//  Write some awesome Swift code, or import libraries like "Foundation",
+//  "Dispatch", or "Glibc"
+
+print("Hello Optionals!")
+
+
+var varOptional: Int?  // dcalred optional with nil value
+
+if(varOptional != nil) { // always use a nil check before unwrapping a value of optional
+	print (varOptional!)  // unwrapping of the optional to get the value
+}
+
+// preferred way of doing this
+
+if let optionalValue = varOptional {
+	print (optionalValue)
+	print (varOptional!)
+}
+
+
+
+class Car {
+	var model: String?
+}
+
+var vehicle: Car?
+
+// not a good way to do this
+if let v = vehicle {
+	if let m = v.model {
+		print(m)  // nil value
+	}
+}
+
+// better way to do this
+vehicle = Car()
+vehicle?.model = "Audi"
+
+if let v = vehicle, let m = v.model {
+	print(m)
+}
+
+var cars : [Car]?
+
+cars = [Car]()
+
+if let carArr = cars where carArr.count > 0 {
+	// equivalent to: if let carArr = cars {if carArr.count > 0 {....} }
+	// only execute if not nil and if there are more than 0 elements
+	print ("Not empty and not nil")
+}
+else {
+	cars?.append(Car())
+	print(cars?.count)
+}
+
+
+/*
+class Person {
+	var age: Int!  // implicitly unwrapped optionals - make sure that it has value initialized to it ALWAYS.
+	
+	func setAge(newAge:Int) {
+		self.age = newAge
+	}
+}
+*/
+// instead try something like this: 
+
+class Person {
+	var _age: Int!  // avoid doing implicit unwrapped optionals. if you have to then use a getter property like here.
+	
+	var age: Int {
+		if _age == nil {
+			_age = 10
+		}
+		return _age
+	}
+	
+	func setAge(newAge:Int) {
+		self._age = newAge
+	}
+}
+
+var dex = Person()
+print(dex._age)  // nil here so use a check on this
+print(dex.age)   // 10
+
+
+class Dog {
+	var species: String
+	
+	// no ? needed if you are using constructor to initialize some value
+	init(someSpecies:  String) {   // constructor
+		self.species = someSpecies
+	}
+}
+
+var labra = Dog(someSpecies: "Black Labra")
+print(labra.species)

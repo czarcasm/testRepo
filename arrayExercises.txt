@@ -1,0 +1,43 @@
+func printArray(passedArr : [Any]) {
+	for element in passedArr {
+		print(element)
+	}
+	print("-------")
+}
+
+//Declare an empty array of type String
+
+var emptyStringArray = [String]()
+
+// Declare an explicit array of type Double and initialize it with 4 values
+
+var doubleExplicitArray : [Double] = [1.0, 2.0, 3.0, 4.0]
+
+// Declare an array and initialize it with 5 values of any type using type inference (inferred type declaration)
+
+var typeInterferenceArray = [1, 2, 3, 4, 5]
+
+// Use append 3 times in each array
+
+typeInterferenceArray.append(6)
+typeInterferenceArray.append(7)
+typeInterferenceArray.append(8)
+
+// Use removeAt in each array
+
+printArray(passedArr :typeInterferenceArray)
+
+typeInterferenceArray.remove(at: 3)
+
+// Use removeAll on one array
+
+printArray(passedArr :typeInterferenceArray)
+
+typeInterferenceArray.removeAll()
+
+printArray(passedArr :typeInterferenceArray)
+
+// Use a new array feature that you haven't learned yet
+
+var mixedArray : [Any] = [1, "hi", 2.0, "hello", 8, "bye"]
+printArray(passedArr :mixedArray)

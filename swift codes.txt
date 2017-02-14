@@ -1,0 +1,74 @@
+//  Write some awesome Swift code, or import libraries like "Foundation",
+//  "Dispatch", or "Glibc"
+
+print("Hello world!")
+
+var firstNum = 15 // inferred type declaration 
+
+var secondNum : Int = 5 // explicit type declaration - explicit type annotation
+
+var sumNum = firstNum + secondNum
+
+print ("Result of adding \(firstNum) and \(secondNum) is \(sumNum)")  // string interpolation
+
+var xNumber : Double = 20
+
+var yNumber : Double = 423
+
+print (xNumber + yNumber)
+
+var str = "Hello "
+var str2 = "World"
+var str3 = "\(str)\(str2)"
+
+print (str3)
+
+func demoFunction(param01 : String, param02 : String) {
+	print("\(param01)  \(param02)")
+}
+
+demoFunction(param01 : "hi", param02 : "hello")
+
+func callByRefDemo(param1 : inout Int, param2 : Int) {
+	print(param1)
+	param1 = param1 * param2
+	print(param1)
+}
+
+callByRefDemo(param1 : &firstNum, param2 : 5)
+print(firstNum)
+
+var demoArray: [Int] = [1, 2, 3, 4] 
+// or var demoArray : Array<Int> = [1, 2, 3, 4]
+print ("Count of array is : \(demoArray.count)")
+
+var dynamicArray = [String]()
+dynamicArray.append("demo")
+dynamicArray.append("test")
+dynamicArray.append("sample")
+dynamicArray.append("hi")
+dynamicArray.remove(at: 3)
+
+for arrayVal in dynamicArray {
+	print("Element : \(arrayVal)")
+}
+
+var blankDict = [Int:String]() // or also blankict = [:]
+
+var demoDictionary: [Int : String] = [1: "One", 2: "Two", 3: "Three"]
+
+demoDictionary[4] = "Four"
+demoDictionary[0] = "Zero"
+demoDictionary[0] = nil  // destroy the value at key name 0.
+
+for (num, numName) in demoDictionary {
+	print ("Num : \(num) and in words: \(numName)")
+}
+
+for key in demoDictionary.keys {
+	print ("Num : \(key)")
+}
+	
+for val in demoDictionary.values {
+	print ("In words: \(val)")
+}

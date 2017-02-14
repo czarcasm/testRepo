@@ -1,0 +1,60 @@
+//  Write some awesome Swift code, or import libraries like "Foundation",
+//  "Dispatch", or "Glibc"
+
+print("Hello Loops!")
+
+// Create an empty array of type Int called oddNumbers
+
+var oddNumbers = [Int]()
+
+// append array value and use for-in loop to find sum of all numbers less than equal to 100
+
+oddNumbers.append(1)
+oddNumbers.append(3)
+oddNumbers.append(4)
+oddNumbers.append(7)
+oddNumbers.append(9)
+oddNumbers.append(11)
+oddNumbers.append(99)
+oddNumbers.append(101)
+oddNumbers.append(103)
+oddNumbers.append(105)
+
+var sum = 0;
+
+for num in oddNumbers {
+	if(num <= 100) {
+		sum = sum + num	
+	}
+}
+
+print ("Sum is : \(sum)")
+
+oddNumbers.removeAll()
+//Using a standard for-in loop add all odd numbers less than or equal to 100 to the oddNumbers array
+
+for index in 0...100 {
+	if(index % 2 != 0) {
+		oddNumbers.append(index)
+	}
+}
+
+// Create a second array called sums of type Int
+
+var sums = [Int]() 
+
+// Using a for-in, iterate through oddNumbers array and add the current iteration value + 5 to the sums array
+
+for iterator in 0..<oddNumbers.count {
+	oddNumbers[iterator] = oddNumbers[iterator] + 5
+	sums = oddNumbers
+}
+
+print(sums)
+
+// Using a repeat while loop, iterate through the sums array and print "The sum is: x" where x is the current value of the iteration (ie The sum is: 15)
+var index = 0
+repeat {
+	print("Index: \(index) Sum: \(sums[index])")
+	index = index + 1
+} while (index < sums.count)

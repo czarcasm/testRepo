@@ -1,0 +1,98 @@
+1. create a reporsitory on github remote and local.
+2. generate new ssh keys and add these keys to the github. To do this follow the steps:
+	(a) open git bash terminal and on it type the following line:
+		$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+	(b) this would ask you to "Enter a file in which to save the key". if not entered then it will save the file as /Users/you/.ssh/id_rsa.pub
+	(c) further you will be prompted to enter a passphrase for this SSH key.
+	(d) Add this generated passphrase on to the github account.
+	(e) Type in the following command to copy the generated file to clipboard:
+		$ clip < ~/.ssh/id_rsa.pub   where "id_rsa.pub" is the file in which the SSH key was saved to.
+	(f) Go to your profile on github.com and under settings go to "SSH and GPG keys."
+	(g) Click New SSH key and paste the copied key into this filed and then click on button "Add SSH Key"
+
+Follow this link for more info: https://help.github.com/articles/connecting-to-github-with-ssh/
+
+3. Now you are ready to add content on to the git repo.
+
+4. Create a README.md file in your local directory to be added on to the git repo.
+
+	README.md file is a small description file that is needed for every project and is useful to desribe what the projct is all about.
+
+	There is also .gitignore files which would never be pushed on to the repository and will stay locally. No commits are allowed for such files and they will never be version controlled.
+	A good example is file containing appId. Since you would never want your appId to be made public you wouldn't push it into the server for public.
+
+5. use "git init" command on the git command line interface and this should make your directory read to be synced with git repo by adding a hidden .git file inside this directory.
+
+6. To add the README.md file to the staged changes (ready to be committed) use the command:
+	git add README.md
+
+7. To confirm that the file has been marked as ready to commit use "git status" command
+
+8. To add all files from your current directory use:
+	git add -A
+
+9. To commit these staged changes on to git repo use command:
+	git commit -m "This is the commit message"
+
+10. If you have many commits on a file you can check them using the command:
+	git log
+
+11. To go back to a previous commit use command:
+	git checkout <First seven characters of commit branch name>
+
+bhatiah@DT-BhatiaH MINGW64 ~/Desktop/git/testRepo (master)
+$ git log
+commit 0bfaa991fd03256772e79e5bc43cf7c8e670093e
+Author: Harshit Bhatia <Harshit.Bhatia@Reval.com>
+Date:   Fri Feb 10 09:51:27 2017 +0530
+
+    Made second change in README.md
+
+commit 327387de903a6d66f545dc7ffbf4e939c6b0d0d3
+Author: Harshit Bhatia <Harshit.Bhatia@Reval.com>
+Date:   Fri Feb 10 09:47:24 2017 +0530
+
+    This is the commit message
+
+bhatiah@DT-BhatiaH MINGW64 ~/Desktop/git/testRepo (master)
+$ git checkout 327387d
+Note: checking out '327387d'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 327387d... This is the commit message
+
+
+12. You can look at all the branches that exist by using:
+	git branch
+
+13. To move to a different branch you can use the command:
+	git checkout master	;	where master is the branch name
+
+14. To link the remote repository to a branch on your laptop you have to use:
+	git remote add origin https://github.com/czarcasm/testRepo.git ;	origin is the branch name and the url is the link to github repo
+
+15. To move the local changes to the server now (called as pushing the code):
+	git push -u origin master ;	moves the code from origin branch from local to master branch on to the server. Might ask for username password.
+	-u means upstream
+
+16. To get the changes from server to local machine you can use:
+	git pull origin master
+	which is equivalent to git fetch origin master and then git merge orgin master
+
+17. When you resume working on a repo always:
+	(a) pull the data from remote git repo to local git repoby using
+		git pull origin master
+	(b) after making changes locally use:
+		(i)		git add -A
+		(ii) 	git commit -m "Commit message"
+		(iii) 	git remote add origin https://github.com/czarcasm/testRepo.git
+		(iv)	git push -u origin master
+	(c) you have successfully synced local and remote repo

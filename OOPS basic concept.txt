@@ -1,0 +1,90 @@
+//  Write some awesome Swift code, or import libraries like "Foundation",
+//  "Dispatch", or "Glibc"
+
+print("Hello OOPS!")
+
+class Vehicle {
+	var tires = 4
+	var headlights = 2
+	var horsepower = 500
+	var speed = 10
+	var make: String?
+	var carModel: String?
+	var model = ""
+	
+	init() {
+		print("I am parent")
+	}
+	
+	func drive(acceleration : Int) {
+		speed = speed + acceleration
+	}
+	
+	func brake() {
+		speed = speed - 1
+	}
+}
+
+let bmw = Vehicle()
+bmw.model = "328i"
+
+let ford = Vehicle()
+ford.model = "F150"
+ford.brake()
+
+func passByReference (vehicle : Vehicle) {   // objects are always passed by reference. Their value would be overriden
+	vehicle.model = "F650"
+}
+
+print (ford.model)  // F150
+passByReference(vehicle: ford)
+print(ford.model)   // F650
+
+
+// INHERITANCE
+
+class SportsCar: Vehicle {
+	
+	override init() {
+		super.init()
+		print("I am child")
+		make = "BMW"
+		carModel = "3 series"
+	}
+	
+	override func drive(acceleration: Int) {
+		speed = speed + (acceleration * 2)
+	}
+}
+
+let parentObj = Vehicle()
+print("-------------")
+let childObj = SportsCar()
+
+
+
+// POLYMORPHISM
+
+class Shape {
+	var area: Double?
+	
+	func calculateArea(valA: Double, valB: Double) {
+		
+	}
+}
+
+class Triangle: Shape {
+	
+	override func calculateArea(valA: Double, valB: Double) {
+		area = (valA * valB) / 2
+	}
+}
+
+class Rectangle: Shape {
+	
+	override func calculateArea(valA: Double, valB: Double) {
+		area = (valA * valB)
+	}
+}
+
+
