@@ -1,0 +1,4 @@
+I am creating a new file with wrong name
+I will rename it using
+- git mv command
+- mv command
